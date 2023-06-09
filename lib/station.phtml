@@ -1,0 +1,50 @@
+<?php global $station; ?>
+    <!doctype html>
+    <html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stacje</title>
+</head>
+<body>
+<h3>Stacja narciarska: <?= $station->name ?></h3>
+<table border="1px">
+    <thead>
+    <tr>
+        <th>Nazwa trasy</th>
+        <th>Długość</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($station->runs as $run): ?>
+        <tr>
+            <td><?= $run->name ?></td>
+            <td><?= $run->length ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<h3>Ocena stacji: <?= $station->rating ?>/6 ★</h3>
+<h3>Oceń stację:</h3>
+<form action="./rate.php" method="GET">
+    <input type="hidden" name="station" value="<?= $station->id ?>">
+    <input type="radio" name="rating" id="radio_1" value="1">
+    <label for="radio_1">1 ★</label><br>
+    <input type="radio" name="rating" id="radio_2" value="2">
+    <label for="radio_2">2 ★</label><br>
+    <input type="radio" name="rating" id="radio_3" value="3">
+    <label for="radio_3">3 ★</label><br>
+    <input type="radio" name="rating" id="radio_4" value="4">
+    <label for="radio_4">4 ★</label><br>
+    <input type="radio" name="rating" id="radio_5" value="5">
+    <label for="radio_5">5 ★</label><br>
+    <input type="radio" name="rating" id="radio_6" value="6">
+    <label for="radio_6">6 ★</label><br><br>
+    <input type="submit" value="Oceń">
+</form>
+<br>
+<a href="./index.php">Powrót do strony głównej</a>
+</body>
+</html>

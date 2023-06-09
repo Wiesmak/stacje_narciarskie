@@ -1,0 +1,4 @@
+<Directory ~ "\lib">
+  Order allow,deny
+  Deny from all
+</Directory>
